@@ -1,0 +1,326 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{csc}
+\usepackage{textcomp}
+
+% Document metadata
+\title{CSC165H1 Problem Set 2}
+\author{Yulin WANG, Qidi Zhou, Dana Zhao}
+\date{Wednesday February 7}
+% Document starts here
+\begin{document}
+\maketitle
+
+\section*{1. AND vs. IMPLIES} 
+\vspace{20pt}
+\vspace{20pt}
+
+\subsection*{a)}
+Proof: \\
+Header:
+
+Let n$\in$ $\mathbb{N}$
+
+Assume that n $\textgreater$ 15
+
+We want to prove that $n^3$ - 10$n^2$ + 3 \ $\geq$\ 165. \\
+~\\
+Body:
+\begin{align*}
+n^3-10n^2+3 &\geq n^3 - 10n^2  \quad(since \ 3 \geq 0) \\
+&= n^2(n-10) \\
+&\geq  n^2 \times 1 = n^2 = 15^2 \quad (since \ n > 15  \Rightarrow n - 10 \geq 1) \\
+&\geq 165
+\end{align*}\\
+Therefore, we have proven that $\forall$n $\in$ $\mathbb{N}$, n $\textgreater$ 15 $\Rightarrow$ n$^3$ -10n$^2$ + 3\ $\geq$ 165. \\
+
+$\hfill\square$ 
+\newpage
+\subsection*{b)}
+Since this statement is False, so we want to disprove it.\\
+We can prove that its negation is True.\\
+Negation of the original statement: $\exists$n $\in$ $\mathbb{N}$, n $\leq$ 15 $\vee$ $n^3$ - 10$n^2$ + 3\ $\textless$ 165.\\
+Proof:\\
+Header:
+
+Let n = 1, then n $\in$ $\mathbb{N}$
+
+We want to prove  n $\leq$ 15 $\vee$ n$^3$ - 10n$^2$ + 3\ $\textless$\ 165.\\
+Body:
+
+Since n = 1, so n $\leq$ 15.
+
+Thus, n $\leq$ 15 $\vee$ n$^3$ - 10n$^2$ + 3\ $\textless$\ 165 is True. \\
+~\\
+Therefore, negation of the original statement is True, then the original statement is False.
+
+$\hfill\square$ 
+
+\vspace{20pt}
+
+\section*{2. Ceiling function}
+\subsection*{a)}
+Translation: $\forall$n,m $\in$ $\mathbb{N}$, n $\textless$ m $\Rightarrow$ $\lceil$$\frac{m-1}{m}$$\cdot$ n$\rceil$ = n \\
+Proof:\\
+Header:
+
+Let n, m $\in$ $\mathbb{N}$
+
+Assume that n $\textless$ m
+
+We want to prove that $\lceil$$\frac{(m-1)}{m}$$\cdot$ n$\rceil$ = n. \\
+Body:
+\begin{align*}
+\lceil \frac{(m-1)}{m} \cdot n \rceil  &= \lceil (1 - \frac{1}{m})\cdot n\rceil  \\
+&=\lceil - \frac{n}{m} + n\rceil \\
+\end{align*}
+
+By Fact 2, since -$\frac{n}{m}$ $\in$ $\mathbb{R}$ and n$\in$ $\mathbb{Z}$, so we have:
+
+$\quad$ $\quad$ $\quad$ $\quad$ $\quad$ $\lceil$-$\frac{n}{m}$ + n$\rceil$ = $\lceil$-$\frac{n}{m}$$\rceil$ + n
+
+Since n, m $\in$ $\mathbb{N}$ and n $\textless$ m, we know that 0 $\leq$ $\frac{n}{m}$ $\textless$ 1
+
+Then, -1 $\textless$ - $\frac{n}{m}$ $\leq$ 0
+
+So, $\lceil$-$\frac{n}{m}$$\rceil$ = 0
+
+Thus, $\lceil$ $\frac{(m-1)}{m}$ $\cdot$ n $\rceil$ = $\lceil$-$\frac{n}{m}$$\rceil$ + n = 0 + n = n\\
+~\\
+Therefore, we have proven that $\forall$ n,m $\in$ $\mathbb{N}$, n $\textless$ m $\Rightarrow$ $\lceil$$\frac{(m-1)}{m}$$\cdot$n$\rceil$ = n.
+
+$\hfill\square$
+
+\newpage
+
+\subsection*{b)}
+\vspace{20pt}
+Translation: \\
+$\forall$n $\in$ $\mathbb{N}$, (50$\mid$nextFifty(n) $\wedge$ nextFifty(n) $\geq$ n) $\wedge$ ($\forall$k $\in$ $\mathbb{N}$, 50\textbar k $\wedge$ k $\geq$ n $\Rightarrow$ k $\geq$ nextFifty(n)) \\
+~\\
+$\Leftrightarrow$ $\forall$n $\in$ $\mathbb{N}$, (50$\mid$50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ $\wedge$ 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ $\geq$ n) $\wedge$ ($\forall$k $\in$ $\mathbb{N}$, 50\textbar k $\wedge$ k $\geq$ n $\Rightarrow$ k $\geq$ 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$) \\
+~\\
+Proof: \\
+Header:
+
+Let n$\in$ $\mathbb{N}$\\
+Body:\\
+~\\
+Firstly, we want to prove that 50\textbar50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ $\wedge$ 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ $\geq$ n
+
+Since 1\textbar$\lceil$$\frac{n}{50}$$\rceil$, so 50\textbar50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ $\quad$ (multiply 50 on each side)
+
+Since $\lceil$x$\rceil$ $\geq$ x, so $\lceil$$\frac{n}{50}$$\rceil$ $\geq$ $\frac{n}{50}$
+
+Thus 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ $\geq$ n (multiply 50 on each side) \\
+~\\
+Therefore, we have proven that 50\textbar50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ $\wedge$ 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ $\geq$ n \\
+~\\
+Secondly, we want to prove that $\forall$k $\in$ $\mathbb{N}$, 50$\mid$k $\wedge$ k $\geq$ n $\Rightarrow$ k$\geq$ 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ 
+
+Let k$\in$ $\mathbb{N}$
+
+Assume that 50$\mid$k $\wedge$ k $\geq$ n
+
+Since 50$\mid$k represents $\exists$m$\in$ $\mathbb{Z}$, k = 50m $\geq$ n
+
+So m $\geq$ $\frac{n}{50}$ (divide 50 on each side)
+
+Then by Fact 1, we know m$\geq$ $\lceil$$\frac{n}{50}$$\rceil$,
+
+so 50m $\geq$ 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$, then k$\geq$ 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ \\
+~\\
+Therefore, we have proven that $\forall$k $\in$ $\mathbb{N}$, 50$\mid$k $\wedge$ k $\geq$ n $\Rightarrow$ k$\geq$ 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ \\
+~\\
+In conclusion, we have proven that:\\
+$\forall$n $\in$ $\mathbb{N}$, (50$\mid$nextFifty(n) $\wedge$ nextFifty(n) $\geq$ n) $\wedge$ ($\forall$k $\in$ $\mathbb{N}$, 50\textbar k $\wedge$ k $\geq$ n $\Rightarrow$ k $\geq$ nextFifty(n)) \\
+
+$\hfill\square$
+
+\newpage
+
+
+
+\section*{3. Divisibility}
+\subsection*{a)}
+
+Translation: \\
+$\forall$n $\in$ $\mathbb{N}$, n $\leq$ 2300 $\Rightarrow$ (49$\mid$n $\Leftrightarrow$  50$\cdot$(50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ - n) = 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$) \\
+~\\
+$\Leftrightarrow$ $\forall$n $\in$ $\mathbb{N}$, n $\leq$ 2300 $\Rightarrow$ (49$\mid$n $\Leftrightarrow$  50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ - n = $\lceil$$\frac{n}{50}$$\rceil$) \\
+~\\
+Proof: \\
+(1) Firstly, we want to prove the $\Rightarrow$ direction of the statement. \\
+Header: 
+
+Let n$\in$ $\mathbb{N}$
+
+Assume that n $\leq$ 2300
+
+We want to prove that 49$\mid$n $\Rightarrow$  50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ - n = $\lceil$$\frac{n}{50}$$\rceil$ \\
+Body:
+
+Assume that 49$\mid$n, which means:
+
+$\exists$k $\in$ $\mathbb{Z}$, n = 49k, so we have:\\
+\begin{align*}
+50\cdot \lceil \frac{n}{50} \rceil - n &= 50\cdot \lceil \frac{49k}{50} \rceil - 49k \\
+&= 50\cdot \lceil \frac{50 - 1}{50} \cdot k\rceil - 49k \\
+&= 50\cdot k - 49k \ (since\ n \leq 2300, \ then\  k = \frac{n}{49} \leq \frac{2300}{49} \ \textless \ 50, \ and \ k\in \  \mathbb{N}, \ so\ by\ 2(a)) \\
+&= k \\
+and\quad \lceil \frac{n}{50} \rceil &= \lceil \frac{49k}{50} \rceil \\
+&= \lceil \frac{50 - 1}{50} \cdot k\rceil \\
+&= k
+\end{align*}
+
+Thus, 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ - n = $\lceil$$\frac{n}{50}$$\rceil$ \\
+~\\
+Therefore, we have proven that: $\forall$n $\in$ $\mathbb{N}$, n $\leq$ 2300 $\Rightarrow$ (49$\mid$n $\Rightarrow$  50$\cdot$(50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ - n) = 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$) \\
+~\\
+(2) Secondly, we want to prove the $\Leftarrow$ direction of the statement. \\
+Header: 
+
+Let n$\in$ $\mathbb{N}$
+
+Assume that n $\leq$ 2300
+
+We want to prove that 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ - n = $\lceil$$\frac{n}{50}$$\rceil$ $\Rightarrow$ 49$\mid$n \\
+Body:
+
+Assume that 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ - n = $\lceil$$\frac{n}{50}$$\rceil$
+
+Then, 49$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ = n
+
+So, $\lceil$$\frac{n}{50}$$\rceil$ = $\frac{n}{49}$ (divide 49 on each side)
+
+Since $\lceil$$\frac{n}{50}$$\rceil$$\in$ $\mathbb{Z}$, so $\frac{n}{49}$$\in$ $\mathbb{Z}$, and then 49$\mid$n \\ 
+~\\
+Therefore, we have proven that: $\forall$n $\in$ $\mathbb{N}$, n $\leq$ 2300 $\Rightarrow$ (50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ - n = $\lceil$$\frac{n}{50}$$\rceil$ $\Rightarrow$ 49$\mid$n) \\
+~\\
+In conclusion, we have proven that $\forall$n $\in$ $\mathbb{N}$, n $\leq$ 2300 $\Rightarrow$ (49$\mid$n $\Leftrightarrow$  50$\cdot$(50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ - n) = 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$) \\
+
+$\hfill\square$
+
+\vspace{20pt}
+\subsection*{b)}
+In order to disprove this statement, we can prove its negation is True. \\
+Since from 3(a) we know that: \\
+$\forall$n $\in$ $\mathbb{N}$, 50$\cdot$(nextFifty(n) - n) = nextFifty(n)) $\Rightarrow$ 49$\mid$n \\
+So, we just need to disprove the $\Rightarrow$ direction of this statement. \\
+Negation of the $\Rightarrow$ direction of the original statement:
+
+$\exists$n $\in$ $\mathbb{N}$, 49$\mid$n $\wedge$ (50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ - n $\neq$ $\lceil$$\frac{n}{50}$$\rceil$) \\
+Proof:\\
+Header:
+
+Let n = 49 $\times$ 50 = 2450, then 49$\mid$n \\
+Body: 
+
+50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ - n = 50$\cdot$$\lceil$$\frac{2450}{50}$$\rceil$ - 2450 = 0
+
+$\lceil$$\frac{n}{50}$$\rceil$ = $\lceil$$\frac{2450}{50}$$\rceil$ = 49
+
+So, 50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ - n $\neq$ $\lceil$$\frac{n}{50}$$\rceil$ \\
+~\\
+Thus, $\exists$n $\in$ $\mathbb{N}$, 49$\mid$n $\wedge$ (50$\cdot$$\lceil$$\frac{n}{50}$$\rceil$ - n $\neq$ $\lceil$$\frac{n}{50}$$\rceil$) \\
+~\\
+Therefore, negation of the original statement is True, then the original statement is False.
+
+$\hfill\square$
+
+\newpage
+\section*{4. Functions}
+\vspace{20pt}
+
+\subsection*{a)}
+$\exists$k $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, f(x) $\leq$ k
+
+\vspace{20pt}
+\subsection*{b)}
+Translation:\\
+\(\forall f_1, f_2 : \mathbb{N} \to \mathbb{R}^{\geq 0}\), ($\exists$$k_1$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, $f_1(x)$ $\leq$ $k_1$) $\wedge$ ($\exists$$k_2$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, $f_2(x)$ $\leq$ $k_2$)
+
+$\qquad$ $\qquad$ $\qquad$ $\Rightarrow$ ($\exists$$k_3$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, ($f_1$ + $f_2$)(x) $\leq$ $k_3$) \\
+Proof:\\
+Header:
+
+Let \(f_1, f_2 : \mathbb{N} \to \mathbb{R}^{\geq 0}\) 
+
+Assume that ($\exists$$k_1$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, $f_1(x)$ $\leq$ $k_1$) $\wedge$ ($\exists$$k_2$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, $f_2(x)$ $\leq$ $k_2$)
+
+We want to prove that $\exists$$k_3$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, ($f_1$ + $f_2$)(x) $\leq$ $k_3$  \\
+Body:
+
+Let x $\in$ $\mathbb{N}$
+
+Let $k_3$ = $k_1$ + $k_2$
+
+Since 0 $\leq$ $f_1(x)$ $\leq$ $k_1$ and 0 $\leq$ $f_2(x)$ $\leq$ $k_2$
+
+So, 0 $\leq$ $f_1(x)$ + $f_2(x)$ $\leq$ $k_1$ + $k_2$ = $k_3$
+
+Thus, ($f_1$ + $f_2$)(x) $\leq$ $k_3$ \\
+~\\
+Therefore, we have proven that: \\
+\(\forall f_1, f_2 : \mathbb{N} \to \mathbb{R}^{\geq 0}\), ($\exists$$k_1$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, $f_1(x)$ $\leq$ $k_1$) $\wedge$ ($\exists$$k_2$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, $f_2(x)$ $\leq$ $k_2$)
+
+$\qquad$ $\qquad$ $\quad$ $\Rightarrow$ ($\exists$$k_3$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, ($f_1$ + $f_2$)(x) $\leq$ $k_3$) \\
+
+$\hfill\square$
+
+\newpage
+
+\vspace{20pt}
+\subsection*{c)}
+\vspace{20pt}
+Translation:\\
+\(\forall f_1, f_2 : \mathbb{N} \to \mathbb{R}^{\geq 0}\), ($\exists$$k_3$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, ($f_1$ + $f_2$)(x) $\leq$ $k_3$) 
+
+$\quad$ $\qquad$ $\qquad$ $\Rightarrow$  ($\exists$$k_1$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, $f_1(x)$ $\leq$ $k_1$) $\wedge$ ($\exists$$k_2$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, $f_2(x)$ $\leq$ $k_2$) \\
+Proof:\\
+Header:
+
+Let \(f_1, f_2 : \mathbb{N} \to \mathbb{R}^{\geq 0}\) 
+
+Assume that $\exists$$k_3$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, ($f_1$ + $f_2$)(x) $\leq$ $k_3$
+
+We want to prove that ($\exists$$k_1$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, $f_1(x)$ $\leq$ $k_1$) $\wedge$ ($\exists$$k_2$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, $f_2(x)$ $\leq$ $k_2$) \\
+Boby:
+
+Let x $\in$ $\mathbb{N}$
+
+Let $k_1$ = $\frac{k_3}{2}$ - 1
+
+Let $k_2$ = $\frac{k_3}{2}$ + 1
+
+Since, ($f_1$ + $f_2$)(x) $\leq$ $k_3$
+
+So, $f_1(x)$ + $f_2(x)$ $\leq$ $k_3$
+
+Then, $f_1(x)$ $\leq$ $k_3$ - $f_2(x)$ $\leq$ $k_3$ - $k_2$ = $k_3$ - ($\frac{k_3}{2}$ + 1) = $\frac{k_3}{2}$ - 1 = $k_1$
+
+Thus, $f_1(x)$ $\leq$ $k_1$
+
+And, $f_2(x)$ $\leq$ $k_3$ - $f_1(x)$ $\leq$ $k_3$ - $k_1$ = $k_3$ - ($\frac{k_3}{2}$ - 1) = $\frac{k_3}{2}$ + 1 = $k_2$
+
+Thus, $f_2(x)$ $\leq$ $k_2$\\
+~\\
+Therefore, we have proven that:\\
+\(\forall f_1, f_2 : \mathbb{N} \to \mathbb{R}^{\geq 0}\), ($\exists$$k_3$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, ($f_1$ + $f_2$)(x) $\leq$ $k_3$) 
+
+$\quad$ $\qquad$ $\qquad$ $\Rightarrow$  ($\exists$$k_1$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, $f_1(x)$ $\leq$ $k_1$) $\wedge$ ($\exists$$k_2$ $\in$ $\mathbb{R}$, $\forall$x $\in$ $\mathbb{N}$, $f_2(x)$ $\leq$ $k_2$) \\
+
+$\hfill\square$
+
+
+
+
+
+
+\vspace{20pt}
+
+
+
+\end{document}

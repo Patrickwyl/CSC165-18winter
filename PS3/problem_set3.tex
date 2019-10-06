@@ -1,0 +1,300 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{csc}
+\usepackage{textcomp}
+
+% Document metadata
+\title{CSC165H1 Problem Set 3}
+\author{Yulin WANG, Qidi Zhou, Dana Zhao}
+\date{Wednesday March 14}
+% Document starts here
+\begin{document}
+\maketitle
+
+\newpage
+\section*{1. Special numbers} 
+\vspace{20pt}
+\vspace{20pt}
+
+Proof by induction:
+
+Define the predicate P(n) as $F_{n}$ - 2 = $\prod_{i=0}^{n-1}$$F_{i}$,
+
+where n is a natural number.
+
+We want to prove that for all n $\in$ $\mathbb{N}$ that P(n) holds.\\
+Base Case:
+
+n = 0. We want to prove P(0) is True.
+
+We know that $F_{0}$ - 2 = $2^{1}$ + 1 - 2 = 1 
+
+We also know $\prod_{i=0}^{-1}$$F_{i}$ = 1 (By the definition of empty products in product notation.)
+
+Since left hand side $F_{0}$ - 2 is equal to right hand side $\prod_{i=0}^{-1}$$F_{i}$, then P(0) holds.\\
+Induction Step:
+
+Let k $\in$ $\mathbb{N}$, and assume P(k) is True that is  $F_{k}$ - 2 = $\prod_{i=0}^{k-1}$$F_{i}$ is True.
+
+Now we want to show that P(k+1) holds that is  $F_{k+1}$ - 2 = $\prod_{i=0}^{k}$$F_{i}$
+
+For right hand side,  $\prod_{i=0}^{k}$$F_{i}$:
+\begin{align*}
+ \prod_{i=0}^{k}F_{i} &= F_{0} \cdot F_{1} \cdot F_{2} \dotsb F_{k-1}\cdot F_{k}\\
+&= \prod_{i=0}^{k-1}F_{i}  \cdot F_{k}\\
+&= (F_{k} - 2) \cdot F_{k} \quad(By\ induction\ hypothesis)\\
+&= F_{k}^{2} - 2F_{k}\\
+&= (2^{2^{k}}+1)^{2} - 2(2^{2^{k}}+1)\quad(From \ definition \ of \ F_{n})\\
+&= (2^{2^{k}})^{2} + 2 \cdot 2^{2^{k}} + 1-2 \cdot 2^{2^{k}}-2\\
+&= 2^{2^{k+1}}-1\quad(From \ hint)
+\end{align*}
+
+For left hand side,  $F_{k+1}$ - 2:
+\begin{align*}
+F_{k+1} - 2 &= 2^{2^{k+1}}+1-2\quad(From \ definition \ of \ F_{n})\\
+&= 2^{2^{k+1}}-1
+\end{align*}
+Therefore, left hand side is equal to right hand side, we have proven $\forall$k $\in$ $\mathbb{N}$, P(k+1) holds.\
+Then we have proven $\forall$n $\in$ $\mathbb{N}$, $F_{n}$ - 2 = $\prod_{i=0}^{n-1}$$F_{i}$ by induction.
+
+$\hfill\square$ 
+\newpage
+
+\vspace{20pt}
+
+\section*{2. Sequences}
+\subsection*{a)}
+$a_{0}$ = 1 \quad  $a_{1}$ = $\frac{1}{2}$ \quad $a_{1}$ =  $\frac{1}{3}$  \quad $a_{1}$ = $\frac{1}{4}$
+
+
+\subsection*{b)}
+\vspace{20pt}
+$\forall$n $\in$ $\mathbb{N}$, $a_{n}$ = $\frac{1}{n + 1}$ \\
+~\\
+Proof by induction: 
+
+Define the predicate P(n) as $a_{n}$ = $\frac{1}{n + 1}$, where n is a natural number.
+
+We want to prove that for all n $\in$ $\mathbb{N}$ that P(n) holds. \\
+Base Case:
+
+n = 0. We want to prove that P(0) is true.
+
+Since $a_{0}$ = $\frac{1}{0 + 1}$ = 1, so P(0) holds. \\
+Induction Step:
+
+Let k $\in$ $\mathbb{N}$, and assume that P(k) is true.
+
+That is, we assume that $a_{k}$ = $\frac{1}{k+1}$.
+
+We want to show that P(k+1) holds, that is $a_{k+1}$ = $\frac{1}{k + 2}$.
+
+Since we know:
+\begin{align*}
+a_{k+1} &= \frac{1}{\frac{1}{a_{k}}+1} \\
+&= \frac{1}{(k+1)+1}  \quad (By \ induction \ hypothesis) \\
+&= \frac{1}{k+2}
+\end{align*}
+
+Thus, P(k+1) holds.\\
+Therefore, we have proven that $\forall$n $\in$ $\mathbb{N}$, $a_{n}$ = $\frac{1}{n + 1}$ by induction. \\
+
+$\hfill\square$
+
+
+\subsection*{c)}
+
+$a_{2,0}$ = 2 \quad $a_{2,1}$ =  $\frac{4}{3}$ \quad $a_{2,2}$ =  $\frac{8}{7}$ \quad $a_{2,3}$ =  $\frac{16}{15}$ \quad \\
+~\\
+$a_{3,0}$ = 3 \quad $a_{3,1}$ =  $\frac{9}{4}$ \quad $a_{3,2}$ =  $\frac{27}{13}$ \quad $a_{3,3}$ =  $\frac{81}{40}$ \quad
+
+\newpage
+
+\subsection*{d)}
+
+$a_{k,n}$ = $\frac{k^{n+1}}{\frac{k^{n+1}-1}{k-1}}$ = $\frac{k^{n+1}(k-1)}{k^{n+1} - 1}$ \\
+~\\
+We want to show that $\forall$n $\in$ $\mathbb{N}$, $\forall$k $\in$ $\mathbb{N}$, k $\textgreater$ 1 $\Rightarrow$ $a_{k,n}$ = $\frac{k^{n+1}(k-1)}{k^{n+1} - 1}$ \\
+~\\
+Proof by induction:
+
+Define the Predicate P(n) as $\forall$k $\in$ $\mathbb{N}$, k $\textgreater$ 1 $\Rightarrow$ $a_{k,n}$ = $\frac{k^{n+1}(k-1)}{k^{n+1} - 1}$,
+
+where n is a natural number.
+
+We want to prove that for all n $\in$ $\mathbb{N}$ that P(n) holds.\\
+Base Case:
+
+n = 0. We want to prove that P(0) is true.
+
+Let k $\in$ $\mathbb{N}$, and assume that k $\textgreater$ 1.
+
+Since $a_{k,0}$ =  $\frac{k(k-1)}{k-1}$ = k, so P(0) holds. \\
+Induction Step:
+
+Let m $\in$ $\mathbb{N}$, and assume that P(m) is true.
+
+That is, we assume that $\forall$k $\in$ $\mathbb{N}$, k $\textgreater$ 1 $\Rightarrow$ $a_{k,m}$ = $\frac{k^{m+1}(k-1)}{k^{m+1} - 1}$
+
+We want to show that P(m+1) holds.
+
+That is $\forall$k $\in$ $\mathbb{N}$, k $\textgreater$ 1 $\Rightarrow$ $a_{k,m+1}$ = $\frac{k^{m+2}(k-1)}{k^{m+2} - 1}$
+
+Let k $\in$ $\mathbb{N}$, and asuume that k $\textgreater$ 1.
+
+Since we know:
+\begin{align*}
+a_{k,m+1} &= \frac{k}{\frac{1}{a_{k,m}}+1} \\
+&= \frac{k}{\frac{k^{m+1}-1}{k^{m+1}(k-1)}+1} \quad (By \ induction \ hypothesis) \\
+&= \frac{k}{\frac{(k^{m+1}-1)+k^{m+1}(k-1)}{k^{m+1}(k-1)}} \\
+&= \frac{k\cdot k^{m+1}(k-1)}{(k^{m+1}-1)+k^{m+1}(k-1)} \\
+&= \frac{k^{m+2}(k-1)}{k^{m+1}(1+k-1)-1} \\
+&= \frac{k^{m+2}(k-1)}{k^{m+1}\cdot k-1} \\
+&= \frac{k^{m+2}(k-1)}{k^{m+2} - 1}
+\end{align*}
+
+Thus, $a_{k,m+1}$ = $\frac{k^{m+2}(k-1)}{k^{m+2} - 1}$, then P(m+1) is true.\\
+Therefore, we have proven that $\forall$n $\in$ $\mathbb{N}$, $\forall$k $\in$ $\mathbb{N}$, k $\textgreater$ 1 $\Rightarrow$ $a_{k,n}$ = $\frac{k^{n+1}(k-1)}{k^{n+1} - 1}$ by induction.\\
+
+$\hfill\square$
+
+\newpage
+
+\section*{3. Properties of Asymptotic Notation}
+\vspace{20pt}
+\subsection*{a)}
+
+Proof:
+
+Let $f: \mathbb{N} \rightarrow \mathbb{R}^{\geq 0}$
+
+Assume that $f \in \cO (n)$
+
+By definition of big-oh, that is
+\[ \exists c, n_{o} \in \mathbb{R}^{+}, \forall n \in \mathbb{N}, n \geq n_{o} \IMP f(n) \leq cn \]
+
+We want to show that $Sum_{f}(n) \in \cO (n^2)$
+
+We have:
+\begin{align*}
+Sum_{f}(n) &= \sum_{i=0}^{n} f(i) \\
+&= \sum_{i=0}^{\lceil n_{o}\rceil - 1} f(i) + \sum_{i=\lceil n_{o}\rceil}^{n} f(i) \\
+&\leq some \ constant \ d + \sum_{i=\lceil n_{o}\rceil}^{n} ci \quad (Since \ i \geq \lceil n_{o}\rceil \IMP f(i) \leq ci) \\
+&= d + cn(n - \lceil n_{o}\rceil + 1) \in \cO (n^2)
+\end{align*}
+
+Therefore, we have proven that for all $f: \mathbb{N} \rightarrow \mathbb{R}^{\geq 0}$,
+
+if  $f \in \cO (n)$, then $Sum_{f}(n) \in \cO (n^2)$ \\
+
+$\hfill\square$ 
+
+\newpage
+
+\subsection*{b)}
+\vspace{20pt}
+Proof by induction:
+
+We want to show that $\forall$n $\in$ $\mathbb{N}$, $\sum_{i=1}^{2^n} \frac{1}{i} \geq \frac{n}{2}$
+
+Define the predicate $P(n)$ as $\sum_{i=1}^{2^n} \frac{1}{i} \geq \frac{n}{2}$,
+
+where $n$ is a natural number.
+
+We want to prove for all $n \in \mathbb{N}$ that $P(n)$ holds.\\
+~\\
+Base case:
+
+$n=0$. We want to prove that $P(0)$ is true.
+
+Since $\sum_{i=1}^{2^0} \frac{1}{i} = \sum_{i=1}^{1} \frac{1}{i} = 1 \geq \frac{0}{2} = 0, \ then \ P(n)$ holds.\\
+~\\
+Induction Step:
+
+Let $k \in \mathbb{N}$, and assume that $P(k)$ is true.
+
+That is, we assume that $\sum_{i=1}^{2^k} \frac{1}{i} \geq \frac{k}{2}$
+
+We want to show that $P(k+1)$ holds, that is $\sum_{i=1}^{2^{k+1}} \frac{1}{i} \geq \frac{k+1}{2}$
+
+We have:
+\begin{align*}
+\sum_{i=1}^{2^{k+1}} \frac{1}{i} &= \sum_{i=1}^{2^k} \frac{1}{i} + \sum_{i=2^k+1}^{2^{k+1}} \frac{1}{i}\\
+&\geq \frac{k}{2} + \sum_{i=2^k+1}^{2^{k+1}} \frac{1}{i}\\
+&\geq \frac{k}{2} + \sum_{i=2^k+1}^{2^{k+1}} \frac{1}{2^{k+1}}\\
+&= \frac{k}{2} + (2 \cdot 2^k - (2^k+1) +1) \cdot \frac{1}{2^{k+1}}\\
+&= \frac{k}{2} + 2^k \cdot \frac{1}{2^{k+1}}\\
+&= \frac{k}{2} + \frac{1}{2} = \frac{k+1}{2}
+\end{align*}
+Thus, $\sum_{i=1}^{2^{k+1}} \frac{1}{i} \geq \frac{k+1}{2}$\\
+~\\
+Therefore, we have proven that $\forall n \in \mathbb{N}, \  \sum_{i=1}^{2^n} \frac{1}{i} \geq \frac{n}{2}$
+
+
+
+$\hfill\square$ 
+
+
+
+\newpage
+
+\vspace{20pt}
+\subsection*{c)}
+Negation of the original statement:
+
+$\exists$ f, g: $\mathbb{N} \rightarrow \mathbb{R}^{\geq 0}$, $f(n) \in \cO (g(n))$ $\wedge$ $Sum_{f}(n) \notin \cO (n\cdot g(n))$ 
+
+$\equiv$  $\exists$ f, g: $\mathbb{N} \rightarrow \mathbb{R}^{\geq 0}$, ($\exists c_{1}, n_{o} \in \mathbb{R}^{+}, \forall n \in \mathbb{N}, n \geq n_{o} \IMP f(n) \leq c_{1}g(n)$)
+
+$\wedge$ ($\forall c_{2}, n_{1} \in \mathbb{R}^{+}, \exists n \in \mathbb{N}, n \geq n_{1} \wedge Sum_{f}(n)\   \textgreater  \ c_{2}ng(n)$)
+
+We want to prove its negation to disprove it. \\ 
+Proof:
+
+Let f(n) = $\frac{1}{n + 1}$, and g(n) = $\frac{1}{n}$
+
+(1) We want to show that $\exists c_{1}, n_{o} \in \mathbb{R}^{+}, \forall n \in \mathbb{N}, n \geq n_{o} \IMP f(n) \leq c_{1}g(n)$
+
+Let $c_{1}$ = 1 $\in$ $\mathbb{R}^{+}$ and $n_{0}$ = 1 $\in$ $\mathbb{R}^{+}$
+
+Let n $\in \mathbb{N}$, and assume that n $\geq n_{0}$, then n $\geq$ 1
+
+When n $\geq$ 1, f(n) = $\frac{1}{n + 1}$ $\leq$ $c_{1}$g(n) = $\frac{1}{n}$
+
+Thus, $f(n) \in \cO (g(n))$
+
+(2) We want to show that $\forall c_{2}, n_{1} \in \mathbb{R}^{+}, \exists n \in \mathbb{N}, n \geq n_{1} \wedge Sum_{f}(n)\   \textgreater  \ c_{2}ng(n)$
+
+Let $c_{2}$, $n_{1}$ $\in$ $\mathbb{R}^{+}$
+
+Let n = max\{ $n_{1}$, $2^{2c_{2}} - 1$ \}+ 1 $\in$ $\mathbb{N}$
+
+Then, we have:
+\begin{align*}
+Sum_{f}(n) &= \sum_{i=0}^{n} \frac{1}{i+1} \\
+&= \sum_{i=1}^{n+1} \frac{1}{i} \\
+&= \sum_{i=1}^{2^{\log_{2}{(n+1)}}} \frac{1}{i} \\
+&\geq \frac{\log_{2}{(n+1)}}{2} \quad (By \ \forall n \in \mathbb{N}, \  \sum_{i=1}^{2^n} \frac{1}{i} \geq \frac{n}{2} \ in  \ question \ 3b) \\
+&\ \textgreater \frac{\log_{2}{(2^{2c_{2}}- 1+1)}}{2} \quad (Since \ n\ \textgreater \ 2^{2c_{2}} - 1) \\
+&= \frac{2c_{2}}{2} \\
+&= c_{2} \\
+&= c_{2} \cdot n \cdot \frac{1}{n} \\
+&= c_{2}ng(n)
+\end{align*}
+
+Thus, $Sum_{f}(n) \notin \cO (n\cdot g(n))$ \\
+~\\
+Therefore, by (1) and (2), we have proven that:
+
+$\exists$ f, g: $\mathbb{N} \rightarrow \mathbb{R}^{\geq 0}$, $f(n) \in \cO (g(n))$ $\wedge$ $Sum_{f}(n) \notin \cO (n\cdot g(n))$ \\
+Hence, we have disproven the original statement. \\
+
+$\hfill\square$ 
+
+\vspace{20pt}
+
+
+
+\end{document}

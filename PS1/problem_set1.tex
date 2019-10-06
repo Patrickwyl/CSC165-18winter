@@ -1,0 +1,156 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{csc}
+
+% Document metadata
+\title{CSC165H1 Problem Set 1}
+\author{Yulin WANG, Dana Zhao, Qidi Zhou}
+\date{Wednesday January 24}
+
+
+% Document starts here
+\begin{document}
+\maketitle
+
+\section*{1. Propositional formulas} 
+\vspace{20pt}
+(a)(i) The truth table for (a)
+
+
+\vspace{20pt}
+
+\begin{tabular}{c c c c c}
+
+p & q & (p $\Rightarrow$ q) & $\neg$q & (p $\Rightarrow$ q) $\Rightarrow$ $\neg$q \\
+
+\hline
+
+T & T & T & F & F \\
+T & F & F & T & T \\
+F & T & T & F & F \\
+F & F & T & T & T \\
+
+\end{tabular}
+\vspace{20pt}
+
+
+~\\
+(a)(ii) A logically equivalent formula for (a)
+
+\vspace{20pt}
+
+\begin{align*}
+(p \Rightarrow q) \Rightarrow \neg q \quad &\equiv \quad (\neg p \vee q) \Rightarrow 
+\neg q \qquad(equivalence\ from\ class) \\
+&\equiv \quad \neg(\neg p \vee q) \vee \neg q \qquad(equivalence\ from\ class) \\
+&\equiv \quad (p \wedge \neg q) \vee \neg q \qquad(DeMorgan's\ Law) 
+\end{align*}
+
+\vspace{20pt}
+
+~\\
+(b)(i) The truth table for (b)
+
+\vspace{20pt}
+
+\begin{tabular}{c c c c c c c}
+
+p & $\neg$r & q & $\neg$p & p $\Rightarrow$ $\neg$r & $\neg$p $\Rightarrow$ q 
+&(p $\Rightarrow$ $\neg$r) $\wedge$ ($\neg$p $\Rightarrow$ q) \\
+
+\hline
+
+T & T & T & F & T & T & T \\
+T & T & F & F & T & T & T \\
+T & F & T & F & F & T & F \\
+F & T & T & T & T & T & T \\
+T & F & F & F & F & T & F \\
+F & T & F & T & T & F & F \\
+F & F & T & T & T & T & T \\
+F & F & F & T & T & F & F
+
+\end{tabular}
+\vspace{20pt}
+
+\newpage
+
+~\\
+(b)(ii) A logically equivalent formula for (b)
+
+\vspace{20pt}
+
+\begin{align*}
+(p \Rightarrow \neg r) \wedge (\neg p \Rightarrow q) \quad &\equiv \quad
+(\neg p \vee \neg r) \wedge (\neg p \Rightarrow q) \quad (equivalence\ from\ class) \\
+&\equiv \quad (\neg p \vee \neg r) \wedge (p \vee q) \quad (equivalence\ from\ class)
+\end{align*}
+
+
+\vspace{20pt}
+
+\section*{2. Fixed Points}
+
+\vspace{20pt}
+
+
+(a) F(x): $\exists$x $\in$ $\mathbb{N}$, f(x) = x \\
+~\\
+(b) L(a): P = $\{$x $\in$ $\mathbb{N}$$\mid$f(x) = x$\}$, $\exists$a $\in$ P, $\forall$x $\in$ P, 
+(a $\textless$ x) $\vee$ (a = x) \\
+~\\
+(c) G(x): P = $\{$x $\in$ $\mathbb{N}$$\mid$f(x) = x$\}$, $\exists$a $\in$ P, $\forall$x $\in$ P, 
+(x $\textless$ a) $\vee$ (x = a) \\
+~\\
+(d)(1) The fixed points of f are: $\{$0, 1, 2, 3, 4, 5, 6$\}$ \\
+~\\
+(d)(2) The least fixed point of f is: 0 \\
+~\\
+(d)(3) The greatest fixed point of f is: 6 
+
+\vspace{20pt}
+
+\section*{3. Partial Orders}
+
+\vspace{20pt}
+
+(a) R(x, y): $\exists$k $\in$ $\mathbb{N}$, x = ky, where x,y $\in$ $\mathbb{N}$ \\
+~\\
+(b) R(a,a) = R(b,b) = R(c,c) = R(d,d) = True and all other values are False. \\
+~\\
+(c) R(a,a) = R(b,d) = R(c,d) = True and all other values are False. \\
+\begin{align*}
+Justify:\quad &1.a\ is\ maximal:\ Since\ R(a,a)\ is\ True,\ so\ a\ is\ maximal.  \\
+&2.not\ a\ greatest\ element:\ Since\ R(b,d)\ = R(c,d)\ =\ True,\ we\ know: \\
+&\quad \forall b,c,d \in D,\ (b \leq d) \wedge (c \leq d),\ so\ d\ is\ also\ maximal. \\
+&\quad Since\ we\ cannot\ figure\ the\ relation\ between\ a\ and\ d,\\
+&\quad so\ a\ is\ not\ a\ greatest\ element.
+\end{align*}
+
+
+\newpage
+
+\section*{4. One-to-one functions}
+
+\vspace{20pt}
+
+(a) 4 $\times$ 4 $\times$ 4 = 64 \\
+~\\
+(b) 4 $\times$ 3 $\times$ 2 = 24 \\
+~\\
+(c) 3 $\times$ 2 $\times$ 1 $\times$ $C_4^2$ = 36 \\
+~\\
+(d) $\forall$x $\in$ $\mathbb{N}$, $\exists$y $\in$ $\mathbb{N}$, R(x, y) $\wedge$ 
+($\forall$z $\in$ $\mathbb{N}$, R(x, z) $\Rightarrow$ z = y) \\
+~\\
+(e) Function(R) $\wedge$ ($\forall$y $\in$ $\mathbb{N}$, $\exists$x $\in$ $\mathbb{N}$, R(x, y)) \\
+~\\
+(f) Function(R) $\wedge$ ($\forall$x $\in$ $\mathbb{N}$, $\forall$y $\in$ $\mathbb{N}$, R(x, y) $\Rightarrow$ ($\forall$z $\in$ $\mathbb{N}$, R(z, y) $\Rightarrow$ z = x)) \\
+~\\
+(g) Function(R) $\wedge$ ($\forall$z $\in$ $\mathbb{N}$, $\exists$y $\in$ $\mathbb{N}$, z $\textless$ y $\wedge$ ($\exists$x $\in$ $\mathbb{N}$, R(x, y))) \\
+~\\
+(h) Function(R) $\wedge$ ($\exists$z $\in$ $\mathbb{N}$, $\forall$y $\in$ $\mathbb{N}$, ($\forall$x $\in$ $\mathbb{N}$, $\neg$R(x, y)) $\Rightarrow$ y $\leq$ z)
+
+
+\end{document}
